@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dining">
+
+    <ImageView
+        android:id="@+id/bin1"
+        android:layout_width="110dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bin" />
+
+    <ImageView
+        android:id="@+id/bin2"
+        android:layout_width="93dp"
+        android:layout_height="104dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/bin2" />
+
+    <ImageView
+        android:id="@+id/item1"
+        android:layout_width="114dp"
+        android:layout_height="139dp"
+        android:layout_marginBottom="150dp"
+        android:layout_marginStart="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/chips" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
