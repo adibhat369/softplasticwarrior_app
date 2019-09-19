@@ -13,6 +13,7 @@ public class ProductAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final Product[] products;
+    static private int count;
 
     // 1
     public ProductAdapter(Context context, Product[] products) {
@@ -38,6 +39,18 @@ public class ProductAdapter extends BaseAdapter {
         return null;
     }
 
+    public void updateCount() {
+        this.count = this.count + 1;
+    }
+    public String getTotalSaved() {
+        return String.valueOf(this.count);
+    }
+
+    public void setTotal(int val) {
+        this.count = val;
+    }
+
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // 1
@@ -61,8 +74,8 @@ public class ProductAdapter extends BaseAdapter {
        // authorTextView.setText(mContext.getString(product.getAuthor()));
 
 
-        imageViewFavorite.setImageResource(
-                product.getIsFavorite() ? R.drawable.star_enabled : R.drawable.star_disabled);
+        //imageViewFavorite.setImageResource(
+         //       product.getIsFavorite() ? R.drawable.star_enabled : R.drawable.star_disabled);
 
         return convertView;
     }

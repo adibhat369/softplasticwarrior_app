@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.media.Image;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.DragEvent;
@@ -28,7 +29,10 @@ import android.widget.Toast;
 import androidx.annotation.Px;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Challenge_1 extends AppCompatActivity implements View.OnDragListener, View.OnLongClickListener {
+public class Challenge_1 extends AppCompatActivity implements View.OnDragListener, View.OnTouchListener {
+
+    private static int totalObjects = 0;
+    Button donebutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +41,62 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
         getSupportActionBar().hide();
 
         setContentView(R.layout.challenge_1);
-        ImageView itemimg = (ImageView) findViewById(R.id.item1);
+        final ImageView itemimg = (ImageView) findViewById(R.id.item1);
         itemimg.setTag("Bin2");
-        itemimg.setOnLongClickListener(this);
+        itemimg.setOnTouchListener(this);
+
+        final ImageView item2 = (ImageView) findViewById(R.id.item2);
+        item2.setTag("Bin1");
+        item2.setOnTouchListener(this);
+
+        final ImageView item3 = (ImageView) findViewById(R.id.item3);
+        item3.setTag("Bin2");
+        item3.setOnTouchListener(this);
+
+        final ImageView item4 = (ImageView) findViewById(R.id.item4);
+        item4.setTag("Bin2");
+        item4.setOnTouchListener(this);
+
+        final ImageView item5 = (ImageView) findViewById(R.id.item5);
+        item5.setTag("Bin1");
+        item5.setOnTouchListener(this);
+
+        final ImageView item6 = (ImageView) findViewById(R.id.item6);
+        item6.setTag("Bin2");
+        item6.setOnTouchListener(this);
+
+        final ImageView item7 = (ImageView) findViewById(R.id.item7);
+        item7.setTag("Bin2");
+        item7.setOnTouchListener(this);
+
+        final ImageView item8 = (ImageView) findViewById(R.id.item8);
+        item8.setTag("Bin1");
+        item8.setOnTouchListener(this);
+
+        final ImageView item9 = (ImageView) findViewById(R.id.item9);
+        item9.setTag("Bin2");
+        item9.setOnTouchListener(this);
+
+        final ImageView item10 = (ImageView) findViewById(R.id.item10);
+        item10.setTag("Bin1");
+        item10.setOnTouchListener(this);
+
+//        itemimg.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//                    ClipData data = ClipData.newPlainText("", "");
+//                    View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(itemimg);
+//
+//                    itemimg.startDrag(data, shadowBuilder, itemimg, 0);
+//                    itemimg.setVisibility(View.INVISIBLE);
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            }
+//        });
+
 
         ImageView bin2 = (ImageView)findViewById(R.id.bin2);
         bin2.setTag("Bin2");
@@ -83,7 +140,7 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
         builder1.setCancelable(true);
         final View customLayout = getLayoutInflater().inflate(R.layout.popup, null);
         TextView popuptextview = (TextView)customLayout.findViewById(R.id.textpopup);
-        popuptextview.setText("Drag items on the table to their bins");
+        popuptextview.setText("Drag the items to the correct bins");
 
 
 
@@ -106,6 +163,19 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
 //                });
         AlertDialog alert11 = builder1.create();
         alert11.show();
+
+         donebutton = (Button) findViewById(R.id.donebutton);
+        donebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     @Override
@@ -161,6 +231,10 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
                 String dropped_tag = (String) dropped.getTag();
 
                 if ((droptarget_tag != null) && (droptarget_tag.equals (dropped_tag))) {
+                    totalObjects = totalObjects + 1;
+                    if(totalObjects == 10) {
+                        donebutton.setVisibility(View.VISIBLE);
+                    }
                     Toast.makeText(this, "Great Job!!", Toast.LENGTH_SHORT).show();
                     MediaPlayer ring= MediaPlayer.create(Challenge_1.this,R.raw.cartooncowbell);
                     ring.start();
@@ -182,7 +256,7 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
                 } else {
                     MediaPlayer ring= MediaPlayer.create(Challenge_1.this,R.raw.cartoonboing);
                     ring.start();
-                    Toast.makeText(this, "Invalid drop ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Wrong Bin!! ", Toast.LENGTH_LONG).show();
 
 
             }
@@ -200,8 +274,11 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
                 // Invalidates the view to force a redraw
                 v.invalidate();
                 // Does a getResult(), and displays what happened.
-                if (!event.getResult())
+                if (!event.getResult()) {
                     Toast.makeText(this, "The drop didn't work.", Toast.LENGTH_SHORT).show();
+
+                }
+
                 // returns true; the value is ignored.
                 return true;
             // An unknown action type was received.
@@ -213,7 +290,7 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
 
     }
 
-    @Override
+   /* @Override
     public boolean onLongClick(View v) {
         System.out.println("Came inside longclick");
         // Create a new ClipData.Item from the ImageView object's tag
@@ -232,6 +309,26 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
                 , 0          // flags (not currently used, set to 0)
         );
         return true;
+    }*/
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public boolean onTouch(View view, MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+
+            ClipData data = ClipData.newPlainText("id", view.getResources().getResourceEntryName(view.getId()));
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                view.startDragAndDrop(data, shadowBuilder, view, 0);
+            } else {
+                view.startDrag(data, shadowBuilder, view, 0);
+            }
+
+           // view.setVisibility(View.INVISIBLE);
+            return true;
+        }
+        return false;
     }
 }
 

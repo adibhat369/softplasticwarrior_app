@@ -5,17 +5,17 @@
     android:orientation="vertical">
 
     <VideoView
-        android:id="@+id/videoView"
+        android:id="@+id/introvideoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <Button
-        android:id="@+id/letsbutton"
+        android:id="@+id/readybutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/design_default_color_secondary_variant"
-        android:text="LET'S DO IT"
+        android:text="MY BAG IS READY!"
         android:textColor="@color/Whitenew"
         android:textSize="18sp" />
 </FrameLayout>
