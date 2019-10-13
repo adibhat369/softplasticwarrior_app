@@ -34,9 +34,9 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:paddingTop="4dp"
+        android:textColor="@color/Whitenew"
         android:textSize="18sp"
-        android:textStyle="bold"
-        tools:text="Are You My Mother" />
+        android:textStyle="bold" />
 
 
 </LinearLayout>

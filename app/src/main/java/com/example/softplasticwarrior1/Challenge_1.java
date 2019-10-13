@@ -1,32 +1,22 @@
 package com.example.softplasticwarrior1;
 
-import android.app.Activity;
+
 import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.media.Image;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.DragEvent;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.Px;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Challenge_1 extends AppCompatActivity implements View.OnDragListener, View.OnTouchListener {
@@ -40,7 +30,10 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
 
+        //Initialise the view objects and set on touch listener for them
+
         setContentView(R.layout.challenge_1);
+        totalObjects = 0;
         final ImageView itemimg = (ImageView) findViewById(R.id.item1);
         itemimg.setTag("Bin2");
         itemimg.setOnTouchListener(this);
@@ -81,93 +74,44 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
         item10.setTag("Bin1");
         item10.setOnTouchListener(this);
 
-//        itemimg.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//                    ClipData data = ClipData.newPlainText("", "");
-//                    View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(itemimg);
-//
-//                    itemimg.startDrag(data, shadowBuilder, itemimg, 0);
-//                    itemimg.setVisibility(View.INVISIBLE);
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//            }
-//        });
 
-
-        ImageView bin2 = (ImageView)findViewById(R.id.bin2);
+        ImageView bin2 = (ImageView) findViewById(R.id.bin2);
         bin2.setTag("Bin2");
         bin2.setOnDragListener(this);
         ImageView bin1 = (ImageView) findViewById(R.id.bin1);
         bin1.setTag("Bin1");
         bin1.setOnDragListener(this);
 
-//        Button startbutton = (Button) findViewById(R.id.startbutton);
-//        startbutton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                LayoutInflater inflater = (LayoutInflater)
-//                        getSystemService(LAYOUT_INFLATER_SERVICE);
-//                View popupView = inflater.inflate(R.layout.popup, null);
-//
-//                // create the popup window
-//                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-//                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-//                boolean focusable = true; // lets taps outside the popup also dismiss it
-//                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-//
-//                // show the popup window
-//                // which view you pass in doesn't matter, it is only used for the window tolken
-//                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-//
-//                // dismiss the popup window when touched
-//                popupView.setOnTouchListener(new View.OnTouchListener() {
-//                    @Override
-//                    public boolean onTouch(View v, MotionEvent event) {
-//                        popupWindow.dismiss();
-//                        return true;
-//                    }
-//                });
-
-    //        }
-      //  });
+        // Information popup
         final AlertDialog.Builder builder1 = new AlertDialog.Builder(Challenge_1.this);
         //builder1.setMessage("Write your message here.");
         builder1.setCancelable(true);
         final View customLayout = getLayoutInflater().inflate(R.layout.popup, null);
-        TextView popuptextview = (TextView)customLayout.findViewById(R.id.textpopup);
+        TextView popuptextview = (TextView) customLayout.findViewById(R.id.textpopup);
         popuptextview.setText("Drag the items to the correct bins");
-
 
 
         builder1.setView(customLayout);
 
-//        builder1.setPositiveButton(
-//                "READY TO PLAY",
-//                new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
-
-//        builder1.setNegativeButton(
-//                "No",
-//                new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
-        AlertDialog alert11 = builder1.create();
+        // Done popup and on challenge completed
+        final AlertDialog alert11 = builder1.create();
         alert11.show();
-
-         donebutton = (Button) findViewById(R.id.donebutton);
+        Button buttonGotit = (Button) customLayout.findViewById(R.id.button_gotit);
+        buttonGotit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alert11.dismiss();
+            }
+        });
+        donebutton = (Button) findViewById(R.id.donebutton);
         donebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences sharedPreferences = getSharedPreferences("challenges", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                editor.putBoolean("challenge1", true);
+                editor.commit();
                 finish();
             }
         });
@@ -216,7 +160,7 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
                 // Re-sets the color tint to blue. Returns true; the return value is ignored.
                 // view.getBackground().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
                 //It will clear a color filter .
-               // v.getBackground().clearColorFilter();
+                // v.getBackground().clearColorFilter();
                 // Invalidate the view to force a redraw in the new tint
                 v.invalidate();
                 return true;
@@ -230,13 +174,13 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
                 ImageView dropped = (ImageView) event.getLocalState();
                 String dropped_tag = (String) dropped.getTag();
 
-                if ((droptarget_tag != null) && (droptarget_tag.equals (dropped_tag))) {
+                if ((droptarget_tag != null) && (droptarget_tag.equals(dropped_tag))) {
                     totalObjects = totalObjects + 1;
-                    if(totalObjects == 10) {
+                    if (totalObjects == 10) {
                         donebutton.setVisibility(View.VISIBLE);
                     }
                     Toast.makeText(this, "Great Job!!", Toast.LENGTH_SHORT).show();
-                    MediaPlayer ring= MediaPlayer.create(Challenge_1.this,R.raw.cartooncowbell);
+                    MediaPlayer ring = MediaPlayer.create(Challenge_1.this, R.raw.cartooncowbell);
                     ring.start();
 
                     ClipData.Item item = event.getClipData().getItemAt(0);
@@ -254,19 +198,19 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
                     owner.removeView(vw); //remove the dragged view
 
                 } else {
-                    MediaPlayer ring= MediaPlayer.create(Challenge_1.this,R.raw.cartoonboing);
+                    MediaPlayer ring = MediaPlayer.create(Challenge_1.this, R.raw.cartoonboing);
                     ring.start();
                     Toast.makeText(this, "Wrong Bin!! ", Toast.LENGTH_LONG).show();
 
 
-            }
+                }
                 // Gets the item containing the dragged data
-                              //caste the view into LinearLayout as our drag acceptable layout is LinearLayout
+                //caste the view into LinearLayout as our drag acceptable layout is LinearLayout
 //                LinearLayout container = (LinearLayout) v;
 //                container.addView(vw);//Add the dragged view
 //                vw.setVisibility(View.VISIBLE);//finally set Visibility to VISIBLE
                 // Returns true. DragEvent.getResult() will return true.
-               return true;
+                return true;
 
             case DragEvent.ACTION_DRAG_ENDED:
                 // Turns off any color tinting
@@ -283,34 +227,14 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
                 return true;
             // An unknown action type was received.
             default:
-               // Log.e("DragDrop Example", "Unknown action type received by OnDragListener.");
+                // Log.e("DragDrop Example", "Unknown action type received by OnDragListener.");
                 break;
         }
         return false;
 
     }
 
-   /* @Override
-    public boolean onLongClick(View v) {
-        System.out.println("Came inside longclick");
-        // Create a new ClipData.Item from the ImageView object's tag
-        ClipData.Item item = new ClipData.Item((CharSequence) v.getTag());
-        // Create a new ClipData using the tag as a label, the plain text MIME type, and
-        // the already-created item. This will create a new ClipDescription object within the
-        // ClipData, and set its MIME type entry to "text/plain"
-        String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
-        ClipData data = new ClipData(v.getTag().toString(), mimeTypes, item);
-        // Instantiates the drag shadow builder.
-        View.DragShadowBuilder dragshadow = new View.DragShadowBuilder(v);
-        // Starts the drag
-        v.startDrag(data        // data to be dragged
-                , dragshadow   // drag shadow builder
-                , v           // local data about the drag and drop operation
-                , 0          // flags (not currently used, set to 0)
-        );
-        return true;
-    }*/
-
+    // Override this method and handle the on touch events
     @Override
     @SuppressWarnings("deprecation")
     public boolean onTouch(View view, MotionEvent event) {
@@ -325,7 +249,7 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
                 view.startDrag(data, shadowBuilder, view, 0);
             }
 
-           // view.setVisibility(View.INVISIBLE);
+            // view.setVisibility(View.INVISIBLE);
             return true;
         }
         return false;

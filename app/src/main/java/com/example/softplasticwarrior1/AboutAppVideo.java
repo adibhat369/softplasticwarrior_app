@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AboutAppVideo extends AppCompatActivity {
 
+    boolean endingVideo = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,18 +21,23 @@ public class AboutAppVideo extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.videolayout);
-        //MediaController mp = new MediaController(this);
 
-
+        //Same screen used for intro and ending video
+        endingVideo = getIntent().getBooleanExtra("isEnding", false);
         VideoView videoView = (VideoView) findViewById(R.id.videoView);
-
-        String videopath = "android.resource://com.example.softplasticwarrior1/" + R.raw.littleturtle;
+        String videopath;
+        Button backbutton = (Button) findViewById(R.id.letsbutton);
+        if (endingVideo) {
+            videopath = "android.resource://com.example.softplasticwarrior1/" + R.raw.lastscreen;
+            backbutton.setText("FINISH");
+        } else {
+            videopath = "android.resource://com.example.softplasticwarrior1/" + R.raw.newintro;
+        }
         Uri uri = Uri.parse(videopath);
         videoView.setVideoURI(uri);
-        //videoView.setMediaController(mp);
-        //mp.setAnchorView(videoView);
+
         videoView.start();
-        Button backbutton = (Button) findViewById(R.id.letsbutton);
+
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,7 +45,7 @@ public class AboutAppVideo extends AppCompatActivity {
             }
         });
 
-        }
+    }
 
     @Override
     public void onBackPressed() {

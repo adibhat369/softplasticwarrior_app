@@ -42,6 +42,7 @@ public class ProductAdapter extends BaseAdapter {
     public void updateCount() {
         this.count = this.count + 1;
     }
+
     public String getTotalSaved() {
         return String.valueOf(this.count);
     }
@@ -53,30 +54,20 @@ public class ProductAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // 1
+
         final Product product = products[position];
 
-        // 2
         if (convertView == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             convertView = layoutInflater.inflate(R.layout.product_layout, null);
         }
 
-        // 3
-        final ImageView imageView = (ImageView)convertView.findViewById(R.id.imageview_cover_art);
-        final TextView nameTextView = (TextView)convertView.findViewById(R.id.textview_book_name);
-        //final TextView authorTextView = (TextView)convertView.findViewById(R.id.textview_book_author);
-        final ImageView imageViewFavorite = (ImageView)convertView.findViewById(R.id.imageview_favorite);
+        final ImageView imageView = (ImageView) convertView.findViewById(R.id.imageview_cover_art);
+        final TextView nameTextView = (TextView) convertView.findViewById(R.id.textview_book_name);
+        final ImageView imageViewFavorite = (ImageView) convertView.findViewById(R.id.imageview_favorite);
 
-        // 4
         imageView.setImageResource(product.getImageResource());
         nameTextView.setText(mContext.getString(product.getName()));
-       // authorTextView.setText(mContext.getString(product.getAuthor()));
-
-
-        //imageViewFavorite.setImageResource(
-         //       product.getIsFavorite() ? R.drawable.star_enabled : R.drawable.star_disabled);
-
         return convertView;
     }
 

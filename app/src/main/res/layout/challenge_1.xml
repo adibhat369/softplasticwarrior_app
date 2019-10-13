@@ -15,53 +15,117 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+            <Button
+                android:id="@+id/donebutton"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="150dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/design_default_color_secondary_variant"
+                android:text="DONE"
+                android:textColor="@color/Whitenew"
+                android:textSize="30sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollViewBottom" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollViewBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bin2">
 
-            <ImageView
-                android:id="@+id/item1"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/plasticbag1" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/item2"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/waterbottle" />
+                    <ImageView
+                        android:id="@+id/item6"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        app:srcCompat="@drawable/postbags" />
 
-            <ImageView
-                android:id="@+id/item3"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/wrapper1" />
+                    <ImageView
+                        android:id="@+id/item7"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        app:srcCompat="@drawable/icecream" />
 
-            <ImageView
-                android:id="@+id/item4"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/foodcovers" />
+                    <ImageView
+                        android:id="@+id/item8"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/plastictray" />
 
-            <ImageView
-                android:id="@+id/item5"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/can" />
-        </LinearLayout>
-    </HorizontalScrollView>
+                    <ImageView
+                        android:id="@+id/item9"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/ziplock" />
+
+                    <ImageView
+                        android:id="@+id/item10"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/milkbottle" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/item1"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        app:srcCompat="@drawable/plasticbag1" />
+
+                    <ImageView
+                        android:id="@+id/item2"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        app:srcCompat="@drawable/waterbottle" />
+
+                    <ImageView
+                        android:id="@+id/item3"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/wrapper1" />
+
+                    <ImageView
+                        android:id="@+id/item4"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/foodcovers" />
+
+                    <ImageView
+                        android:id="@+id/item5"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/can" />
+                </LinearLayout>
+            </HorizontalScrollView>
 
             <ImageView
                 android:id="@+id/bin2"
@@ -82,70 +146,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
                 app:srcCompat="@drawable/yellowbin" />
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollViewBottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bin2">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/item6"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/postbags" />
-
-            <ImageView
-                android:id="@+id/item7"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/icecream" />
-
-            <ImageView
-                android:id="@+id/item8"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/plastictray" />
-
-            <ImageView
-                android:id="@+id/item9"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ziplock" />
-
-            <ImageView
-                android:id="@+id/item10"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/milkbottle" />
-        </LinearLayout>
-    </HorizontalScrollView>
-
-            <Button
-                android:id="@+id/donebutton"
-                android:layout_width="200dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="150dp"
-                android:layout_marginStart="150dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/design_default_color_secondary_variant"
-                android:text="DONE"
-                android:textColor="@color/Whitenew"
-                android:textSize="30sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollViewBottom" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
