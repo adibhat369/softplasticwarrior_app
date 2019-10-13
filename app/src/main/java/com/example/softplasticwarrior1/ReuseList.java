@@ -13,7 +13,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class ReuseList extends YouTubeBaseActivity {
 
 
-    public static final String YoutubeAPIKey = "AIzaSyBavTZRqCGYCdakCoVaNrfDfggfh90BH9I";
+    public static final String YoutubeAPIKey = "Insert API Key here";
     private static final String VIDEO_ID_KITE = "7qIUlAf7LO4";
     private static final String VIDEO_ID_FLOWER = "RH9WzvbNTSM";
     private static final String VIDEO_ID_PILLOW = "ineVaZ2Z_sw";
