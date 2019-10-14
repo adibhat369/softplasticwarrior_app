@@ -2,7 +2,9 @@ package com.example.softplasticwarrior1;
 
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.view.View;
@@ -62,7 +64,11 @@ public class RecycleList extends AppCompatActivity {
                         .setPositiveButton("Yes, I did", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                SharedPreferences sharedPreferences = getSharedPreferences("diverted", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                                editor.putBoolean("recycle", true);
+                                editor.commit();
                                 finish();
                             }
                         })

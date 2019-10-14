@@ -124,8 +124,8 @@ public class MainActivity extends Activity {
                 break;
             } else {
                 numCompleted += 1;
+                addOnclickListener(i + 1);
                 completeChallengeView(i);
-
             }
         }
         if (numCompleted == 4) {

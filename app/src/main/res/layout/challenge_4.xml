@@ -83,7 +83,7 @@
         android:layout_marginStart="162dp"
         android:layout_marginTop="80dp"
         android:background="@color/colorAccent"
-        android:text="I diverted my soft plastics from landfill"
+        android:text="Soft plastics diverted!"
         android:textColor="@color/Whitenew"
         android:textSize="18sp"
         android:visibility="invisible"

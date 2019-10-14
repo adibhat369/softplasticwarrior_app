@@ -1,5 +1,7 @@
 package com.example.softplasticwarrior1;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -13,7 +15,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class ReuseList extends YouTubeBaseActivity {
 
 
-    public static final String YoutubeAPIKey = "Insert API Key here";
+    public static final String YoutubeAPIKey = "AIzaSyBavTZRqCGYCdakCoVaNrfDfggfh90BH9I";
     private static final String VIDEO_ID_KITE = "7qIUlAf7LO4";
     private static final String VIDEO_ID_FLOWER = "RH9WzvbNTSM";
     private static final String VIDEO_ID_PILLOW = "ineVaZ2Z_sw";
@@ -51,6 +53,8 @@ public class ReuseList extends YouTubeBaseActivity {
                     current_video = VIDEO_ID_FLOWER;
                     myPlayer.cueVideo(current_video);
                 }
+                updateSharedPrefs();
+
             }
         });
 
@@ -64,6 +68,7 @@ public class ReuseList extends YouTubeBaseActivity {
                     current_video = VIDEO_ID_KITE;
                     myPlayer.cueVideo(current_video);
                 }
+                updateSharedPrefs();
             }
         });
 
@@ -75,10 +80,18 @@ public class ReuseList extends YouTubeBaseActivity {
                     current_video = VIDEO_ID_PILLOW;
                     myPlayer.cueVideo(current_video);
                 }
+                updateSharedPrefs();
 
             }
         });
         //flowerButton.callOnClick();
 
+    }
+    public void updateSharedPrefs(){
+        SharedPreferences sharedPreferences = getSharedPreferences("diverted", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putBoolean("reuse", true);
+        editor.commit();
     }
 }

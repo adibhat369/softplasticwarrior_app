@@ -2,6 +2,7 @@ package com.example.softplasticwarrior1;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class Challenge_3 extends AppCompatActivity {
             new Product(R.string.postbag, R.drawable.postbags),
             new Product(R.string.ziplock, R.drawable.ziplock)
     };
+    int tempInt = 0;public int count = 0;
     final ProductAdapter productAdapter = new ProductAdapter(this, products);
     SharedPreferences sharedPreferences;
     AlertDialog.Builder builder1;
@@ -36,7 +38,18 @@ public class Challenge_3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
 
-        setContentView(R.layout.challenge_2);
+        setContentView(R.layout.challenge_3);
+        // Play intro video only the first time
+        count = readSharedPreferenceInt("cntSP", "intro");
+        if (count == 0) {
+
+            Intent intent = new Intent();
+            intent.setClass(Challenge_3.this, Challenge_3_Intro.class);
+            startActivity(intent);
+            count++;
+            writeSharedPreference(count, "cntSP", "intro");
+        }
+
         sharedPreferences = this.getSharedPreferences("SPW_Sharedpref", Context.MODE_PRIVATE);
 
         //Initialise the gridview
@@ -48,18 +61,14 @@ public class Challenge_3 extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
                 Product book = products[position];
-                //book.toggleFavorite();
                 productAdapter.updateCount();
                 updateValue();
 
-                // This tells the GridView to redraw itself
-                // in turn calling your BooksAdapter's getView method again for each cell
                 productAdapter.notifyDataSetChanged();
             }
         });
 
         builder1 = new AlertDialog.Builder(Challenge_3.this);
-        //builder1.setMessage("Write your message here.");
         builder1.setCancelable(true);
         final View initialMsg = getLayoutInflater().inflate(R.layout.popup, null);
         TextView popuptextview = (TextView) initialMsg.findViewById(R.id.textpopup);
@@ -141,6 +150,20 @@ public class Challenge_3 extends AppCompatActivity {
             });
         }
 
+    }
+    public int readSharedPreferenceInt(String spName, String key) {
+        SharedPreferences sharedPreferences = getSharedPreferences(spName, Context.MODE_PRIVATE);
+        return tempInt = sharedPreferences.getInt(key, 0);
+    }
+
+    //write shared preferences in integer
+    public void writeSharedPreference(int amount, String spName, String key) {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(spName, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt(key, amount);
+        editor.commit();
     }
 }
 

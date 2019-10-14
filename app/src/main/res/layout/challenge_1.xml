@@ -48,34 +48,36 @@
                         android:id="@+id/item6"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        app:srcCompat="@drawable/postbags" />
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/postsatchel2" />
 
                     <ImageView
                         android:id="@+id/item7"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        app:srcCompat="@drawable/icecream" />
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/icecreamwrapper2" />
 
                     <ImageView
                         android:id="@+id/item8"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/plastictray" />
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/plastictray2" />
 
                     <ImageView
                         android:id="@+id/item9"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/ziplock" />
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/ziplock2" />
 
                     <ImageView
                         android:id="@+id/item10"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/milkbottle" />
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/milkbottle2" />
                 </LinearLayout>
             </HorizontalScrollView>
 
@@ -96,34 +98,36 @@
                         android:id="@+id/item1"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        app:srcCompat="@drawable/plasticbag1" />
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/plasticbag2" />
 
                     <ImageView
                         android:id="@+id/item2"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        app:srcCompat="@drawable/waterbottle" />
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/plasticbottle2" />
 
                     <ImageView
                         android:id="@+id/item3"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/wrapper1" />
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/biscuitpacket2" />
 
                     <ImageView
                         android:id="@+id/item4"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/foodcovers" />
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/producebag2" />
 
                     <ImageView
                         android:id="@+id/item5"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/can" />
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/tincan2" />
                 </LinearLayout>
             </HorizontalScrollView>
 

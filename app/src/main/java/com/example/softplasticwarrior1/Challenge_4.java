@@ -120,10 +120,26 @@ public class Challenge_4 extends AppCompatActivity {
                                         intent.putExtra("pcode", post_code);
                                         startActivity(intent);
                                     }
+
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
 
+                            }
+                            else {
+                                new AlertDialog.Builder(Challenge_4.this)
+                                        .setTitle("Get Location")
+                                        .setMessage("Unable to get location!!")
+
+                                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                                        // The dialog is automatically dismissed when a dialog button is clicked.
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .show();
                             }
                         }
                     });
@@ -145,17 +161,22 @@ public class Challenge_4 extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Button doneButton = (Button) findViewById(R.id.button_completed);
-        doneButton.setVisibility(View.VISIBLE);
-        doneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences sharedPreferences = getSharedPreferences("challenges", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences sharedPreferences = getSharedPreferences("diverted", Context.MODE_PRIVATE);
+        Boolean recycleflag = sharedPreferences.getBoolean("recycle", false);
+        Boolean reuseflag = sharedPreferences.getBoolean("reuse", false);
+        if (recycleflag || reuseflag) {
+            doneButton.setVisibility(View.VISIBLE);
+            doneButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SharedPreferences sharedPreferences = getSharedPreferences("challenges", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                editor.putBoolean("challenge4", true);
-                editor.commit();
-                finish();
-            }
-        });
+                    editor.putBoolean("challenge4", true);
+                    editor.commit();
+                    finish();
+                }
+            });
+        }
     }
 }
