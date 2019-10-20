@@ -174,6 +174,10 @@ public class Challenge_4 extends AppCompatActivity {
 
                     editor.putBoolean("challenge4", true);
                     editor.commit();
+                    Intent intent = new Intent();
+                    intent.putExtra("isEnding", true);
+                    intent.setClass(Challenge_4.this, AboutAppVideo.class);
+                    startActivity(intent);
                     finish();
                 }
             });

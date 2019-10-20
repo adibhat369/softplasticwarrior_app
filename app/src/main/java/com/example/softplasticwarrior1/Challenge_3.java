@@ -40,15 +40,15 @@ public class Challenge_3 extends AppCompatActivity {
 
         setContentView(R.layout.challenge_3);
         // Play intro video only the first time
-        count = readSharedPreferenceInt("cntSP", "intro");
-        if (count == 0) {
+       // count = readSharedPreferenceInt("cntSP", "intro");
+        //if (count == 0) {
 
             Intent intent = new Intent();
             intent.setClass(Challenge_3.this, Challenge_3_Intro.class);
             startActivity(intent);
-            count++;
-            writeSharedPreference(count, "cntSP", "intro");
-        }
+            //count++;
+          //  writeSharedPreference(count, "cntSP", "intro");
+        //}
 
         sharedPreferences = this.getSharedPreferences("SPW_Sharedpref", Context.MODE_PRIVATE);
 
@@ -131,7 +131,7 @@ public class Challenge_3 extends AppCompatActivity {
             // Final msg
             final View customLayout = getLayoutInflater().inflate(R.layout.popup, null);
             TextView popuptextview = (TextView) customLayout.findViewById(R.id.textpopup);
-            popuptextview.setText("Great! Now let's do something with these soft plastics");
+            popuptextview.setText("Great! Now let's do something with these!");
             Button buttonGotit = (Button) customLayout.findViewById(R.id.button_gotit);
             builder1.setView(customLayout);
             final AlertDialog alert2 = builder1.create();

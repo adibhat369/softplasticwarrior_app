@@ -128,24 +128,24 @@ public class MainActivity extends Activity {
                 completeChallengeView(i);
             }
         }
-        if (numCompleted == 4) {
-            endingCount = readSharedPreferenceInt("cntSP", "cntKeyEnding");
-            if (endingCount == 0) {
-                Intent intent = new Intent();
-                intent.putExtra("isEnding", true);
-                intent.setClass(MainActivity.this, AboutAppVideo.class);
-                startActivity(intent);
-                endingCount++;
-                writeSharedPreference(endingCount, "cntSP", "cntKeyEnding");
-            }
-            if (endingCount == 1) {
-                endingCount++;
-                writeSharedPreference(endingCount, "cntSP", "cntKeyEnding");
-                finish();
-                System.exit(0);
-            }
+       // if (numCompleted == 4) {
+           // endingCount = readSharedPreferenceInt("cntSP", "cntKeyEnding");
+            //if (endingCount == 0) {
+//                Intent intent = new Intent();
+//                intent.putExtra("isEnding", true);
+//                intent.setClass(MainActivity.this, AboutAppVideo.class);
+//                startActivity(intent);
+              //  endingCount++;
+                //writeSharedPreference(endingCount, "cntSP", "cntKeyEnding");
+            //}
+//            if (endingCount == 1) {
+//                endingCount++;
+//                writeSharedPreference(endingCount, "cntSP", "cntKeyEnding");
+//                finish();
+//                System.exit(0);
+           // }
 
-        }
+    //    }
 
     }
 

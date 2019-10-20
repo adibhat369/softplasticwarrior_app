@@ -7,87 +7,104 @@
     android:layout_height="match_parent"
     android:background="@drawable/background1">
 
-    <TextView
-        android:id="@+id/choose_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="114dp"
-        android:layout_marginStart="114dp"
-        android:layout_marginTop="30dp"
-        android:text="Choose what to do with"
-        android:textColor="@color/Whitenew"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tta_heading" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/softplastic_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="154dp"
-        android:layout_marginStart="154dp"
-        android:layout_marginTop="5dp"
-        android:text="your soft plastic"
-        android:textColor="@color/Whitenew"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose_msg" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <ImageButton
-        android:id="@+id/recycleButton"
-        android:layout_width="180dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="150dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/imageborder"
-        android:scaleType="fitXY"
-        android:src="@drawable/recycle2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tta_heading" />
+        <TextView
+            android:id="@+id/choose_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="114dp"
+            android:layout_marginStart="114dp"
+            android:layout_marginTop="30dp"
+            android:text="Choose what to do with"
+            android:textColor="@color/Whitenew"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tta_heading" />
 
-    <ImageButton
-        android:id="@+id/reuseButton"
-        android:layout_width="180dp"
-        android:layout_height="300dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop="150dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/imageborder"
-        android:scaleType="fitXY"
-        android:src="@drawable/reuse"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tta_heading" />
+        <TextView
+            android:id="@+id/softplastic_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="154dp"
+            android:layout_marginStart="154dp"
+            android:layout_marginTop="5dp"
+            android:text="your soft plastic"
+            android:textColor="@color/Whitenew"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/choose_msg" />
 
-    <TextView
-        android:id="@+id/tta_heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/autour_one"
-        android:text="TIME FOR ACTION!"
-        android:textColor="@color/Whitenew"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ImageButton
+                android:id="@+id/recycleButton"
+                android:layout_width="180dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="150dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/imageborder"
+                android:scaleType="fitXY"
+                android:src="@drawable/recycle2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tta_heading" />
 
-    <Button
-        android:id="@+id/button_completed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="162dp"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="80dp"
-        android:background="@color/colorAccent"
-        android:text="Soft plastics diverted!"
-        android:textColor="@color/Whitenew"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycleButton" />
+            <ImageButton
+                android:id="@+id/reuseButton"
+                android:layout_width="180dp"
+                android:layout_height="300dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="150dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/imageborder"
+                android:scaleType="fitXY"
+                android:src="@drawable/reuse"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tta_heading" />
+
+        <TextView
+            android:id="@+id/tta_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/autour_one"
+            android:text="TIME FOR ACTION!"
+            android:textColor="@color/Whitenew"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button_completed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="162dp"
+                android:layout_marginStart="162dp"
+                android:layout_marginTop="50dp"
+                android:background="@color/colorAccent"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="DONE!"
+                android:textColor="@color/Whitenew"
+                android:textSize="18sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycleButton" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

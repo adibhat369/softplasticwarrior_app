@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AboutAppVideo extends AppCompatActivity {
 
     boolean endingVideo = false;
+    boolean challenge2Video = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +25,15 @@ public class AboutAppVideo extends AppCompatActivity {
 
         //Same screen used for intro and ending video
         endingVideo = getIntent().getBooleanExtra("isEnding", false);
+        challenge2Video = getIntent().getBooleanExtra("isChallenge2", false);
         VideoView videoView = (VideoView) findViewById(R.id.videoView);
         String videopath;
         Button backbutton = (Button) findViewById(R.id.letsbutton);
-        if (endingVideo) {
+        if(challenge2Video) {
+            videopath = "android.resource://com.example.softplasticwarrior1/" + R.raw.challenge2_taskvideo;
+            backbutton.setText("UNDERSTOOD!");
+        }
+        else if (endingVideo) {
             videopath = "android.resource://com.example.softplasticwarrior1/" + R.raw.lastscreen;
             backbutton.setText("FINISH");
         } else {

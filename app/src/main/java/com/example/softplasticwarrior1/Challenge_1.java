@@ -6,6 +6,7 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,12 +18,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Challenge_1 extends AppCompatActivity implements View.OnDragListener, View.OnTouchListener {
 
     private static int totalObjects = 0;
     Button donebutton;
+    TextView errorMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +78,8 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
         final ImageView item10 = (ImageView) findViewById(R.id.item10);
         item10.setTag("Bin1");
         item10.setOnTouchListener(this);
+
+        errorMsg = (TextView) findViewById(R.id.errormsg);
 
 
         ImageView bin2 = (ImageView) findViewById(R.id.bin2);
@@ -179,7 +186,10 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
                     if (totalObjects == 10) {
                         donebutton.setVisibility(View.VISIBLE);
                     }
-                    Toast.makeText(this, "Great Job!!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "Great Job!!", Toast.LENGTH_SHORT).show();
+
+                    errorMsg.setText("GREAT JOB!");
+                    errorMsg.setTextColor(Color.GREEN);
                     MediaPlayer ring = MediaPlayer.create(Challenge_1.this, R.raw.cartooncowbell);
                     ring.start();
 
@@ -200,7 +210,10 @@ public class Challenge_1 extends AppCompatActivity implements View.OnDragListene
                 } else {
                     MediaPlayer ring = MediaPlayer.create(Challenge_1.this, R.raw.cartoonboing);
                     ring.start();
-                    Toast.makeText(this, "Wrong Bin!! ", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this, "Wrong Bin!! ", Toast.LENGTH_LONG).show();
+
+                    errorMsg.setText("WRONG BIN!");
+                    errorMsg.setTextColor(Color.RED);
 
 
                 }

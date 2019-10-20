@@ -150,6 +150,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
                 app:srcCompat="@drawable/yellowbin" />
+
+            <TextView
+                android:id="@+id/errormsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="170dp"
+                android:layout_marginStart="170dp"
+                android:layout_marginTop="20dp"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bin2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
